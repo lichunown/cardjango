@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title>car</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+	<div class="header"></div>
+	<div class="content">
+		<form method="POST">
+
+		</form>
+	</div>
+</body>
+</html>
