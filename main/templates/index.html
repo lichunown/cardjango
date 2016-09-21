@@ -1,14 +1,39 @@
 <html>
 <head>
 	<title>car</title>
-	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+
 </head>
 <body>
 	<div class="header"></div>
 	<div class="content">
 		<div class="test">
-			
+			{% for item in ports %}
+                <button class="testbutton" id="button{{item}}" style="background:#aaaaaa;">{{item}}</button>
+            {% endfor %}
 		</div>
 	</div>
+    <script type="text/javascript">   
+    function buttonid(num){
+        return "#button"+num;
+    } 
+    for(var i=1;i<=26;i++){
+        $(buttonid(i)).click(function(){
+            console.log("click");
+            $.post("/",{"port":i},function(data,status){
+                console.log(data);
+                console.log(status);
+                if($(buttonid(i)).css("background")=="rgb(170, 170, 170) none repeat scroll 0% 0% / auto padding-box border-box"){
+                    $(buttonid(i)).css('background',"#555555");
+                }else{
+                    $(buttonid(i)).css('background',"#aaaaaa");
+                }
+                
+            });
+        });        
+    }
+
+
+    </script>    
 </body>
 </html>
