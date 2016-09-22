@@ -10,12 +10,12 @@ port.init()
 @csrf_exempt
 def index(request):
     content={
-        'ports':[1,2,3,4,5],
-        'maxport':25,
+        'ports':[x for x in range(1,27)],
+        'maxport':26,
     }
     if request.method=="POST":
         if request.POST.get("port",""):
-            result = port.sethigh(int(request.POST.get("port","")))
+            result = port.changestat(int(request.POST.get("port","")))
             return HttpResponse(result)
     else:
         return render(request,"index.html",content)

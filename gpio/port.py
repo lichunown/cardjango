@@ -20,3 +20,13 @@ def setlow(port):
     except Exception,e:
         return e
     return "ok"
+
+def changestat(port):
+    try:
+        if GPIO.input(port):
+            GPIO.output(port,GPIO.LOW)
+        else:
+            GPIO.output(port,GPIO.HIGH) 
+    except Exception,e:
+        return e
+    return "ok"
