@@ -12,25 +12,41 @@
                 <button class="testbutton" id="button{{item}}" style="background:#aaaaaa;">{{item}}</button>
             {% endfor %}
 		</div>
+        <br>
+        <div class="carcontrol">
+            
+        </div>
 	</div>
     <script type="text/javascript">   
     function buttonid(num){
         return "#button"+num;
     } 
+    function removebuttonscolor(){
+        {% for item in ports %}
+            $(buttonid(i)).css('background',"#555555"); 
+        {% endfor %}       
+    } 
+    function addbuttoncolor(num){
+        $(buttonid(i)).css('background',"#cccccc");        
+    }
+   
+    function showbuttoncolor(){
+        removebuttonscolor();
+        {% for item in highport %}
+            addbuttoncolor({{item}});
+        {% endfor %}
+    }
     function initbutton(i){
         $(buttonid(i)).click(function(){
             console.log("click");
             $.post("/",{"port":i},function(data,status){
                 console.log(data);
                 console.log(status);
-                if($(buttonid(i)).css("background")=="rgb(170, 170, 170) none repeat scroll 0% 0% / auto padding-box border-box"){
-                    $(buttonid(i)).css('background',"#555555");
-                }else{
-                    $(buttonid(i)).css('background',"#aaaaaa");
-                }             
+                showbuttoncolor();
             });
         });  
     }
+    
     for(var i=1;i<=Number({{maxport}});i++){
         initbutton(i);
     }   

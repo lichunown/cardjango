@@ -34,3 +34,13 @@ def changestat(port):
     except Exception,e:
         return e
     return "ok"
+
+def getstatus():
+    data=[]
+    for item in ports:
+        try:
+            if GPIO.input(port):
+                data.append(item)
+        except Exception,e:
+            return e
+    return data
