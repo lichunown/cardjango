@@ -21,5 +21,5 @@ def index(request):
             content['highport']=port.getstatus()
             return HttpResponse(result)
     else:
-        content['highport']=port.getstatus()
+        content['highport'] = port.getstatus()
         return render(request,"index.html",content)

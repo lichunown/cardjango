@@ -33,7 +33,7 @@
     function showbuttoncolor(){
         removebuttonscolor();
         {% for item in highport %}
-            addbuttoncolor({{item}});
+            addbuttoncolor("{{item}}");
         {% endfor %}
     }
     function initbutton(i){
