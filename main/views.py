@@ -10,8 +10,8 @@ port.init()
 @csrf_exempt
 def index(request):
     content={
-        'ports':[x for x in range(1,27)],
-        'maxport':26,
+        'ports':[7,11,12,13,15,16,18,22,29,30,31,32,33,35,36,37,38,40],
+        'maxport':40,
     }
     if request.method=="POST":
         if request.POST.get("port",""):
