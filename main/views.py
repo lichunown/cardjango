@@ -19,7 +19,7 @@ def index(request):
 
 @csrf_exempt
 def getstatus(request):
-    return HttpResponse(port.getstatus())
+    return HttpResponse(json.dumps(port.getstatus()))
 
 @csrf_exempt
 def changeport(request):
