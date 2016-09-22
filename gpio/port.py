@@ -1,11 +1,15 @@
 import RPi.GPIO as GPIO
 import time
-ports=[3,]
+
+ports=[x for x in range(1,27)]
 
 def init():
     GPIO.setmode(GPIO.BOARD)
     for item in ports:
-        GPIO.setup(item,GPIO.OUT)
+        try:
+            GPIO.setup(item,GPIO.OUT)
+        except Exception,e:
+            print "%d error:%s" % (item,e)
 
 def sethigh(port):
     try:
