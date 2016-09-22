@@ -23,11 +23,11 @@
     } 
     function removebuttonscolor(){
         {% for item in ports %}
-            $(buttonid(i)).css('background',"#555555"); 
+            $(buttonid("{{item}}")).css('background',"#555555"); 
         {% endfor %}       
     } 
     function addbuttoncolor(num){
-        $(buttonid(i)).css('background',"#cccccc");        
+        $(buttonid(num)).css('background',"#cccccc");        
     }
    
     function showbuttoncolor(){
