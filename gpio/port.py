@@ -42,5 +42,5 @@ def getstatus():
             if GPIO.input(item):
                 data.append(item)
         except Exception,e:
-            return e
+            pass
     return data
