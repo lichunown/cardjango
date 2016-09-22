@@ -23,11 +23,11 @@
     } 
     function removebuttonscolor(){
         {% for item in ports %}
-            $(buttonid("{{item}}")).css('background',"#555555"); 
+            $(buttonid("{{item}}")).css('background',"#cccccc"); 
         {% endfor %}       
     } 
     function addbuttoncolor(num){
-        $(buttonid(num)).css('background',"#cccccc");        
+        $(buttonid(num)).css('background',"#555555");        
     }
    
     function showbuttoncolor(){
@@ -38,7 +38,6 @@
     }
     function initbutton(i){
         $(buttonid(i)).click(function(){
-            console.log("click");
             $.post("/",{"port":i},function(data,status){
                 console.log(data);
                 console.log(status);
