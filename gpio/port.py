@@ -39,7 +39,7 @@ def getstatus():
     data=[]
     for item in ports:
         try:
-            if GPIO.input(port):
+            if GPIO.input(item):
                 data.append(item)
         except Exception,e:
             return e
