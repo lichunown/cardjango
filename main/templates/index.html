@@ -24,6 +24,7 @@
     function showbuttoncolor(){
         $.get("/getstatus",function(data,status){
             data = data.slice(1,-1).split(",")
+            console.log("data:"+data);
             $(".testbutton").css("background","#aaaaaa");
             for(var i=0;i<=data.length;i++){
                 $(buttonid(data[i])).css("background","#555555");
@@ -32,7 +33,7 @@
     }
     function initbutton(i){
         $(buttonid(i)).click(function(){
-            $.post("/",{"port":i},function(data,status){
+            $.post("/changeport",{"port":i},function(data,status){
                 console.log(data);
                 console.log(status);               
             });
@@ -43,6 +44,7 @@
     for(var i=1;i<=Number({{maxport}});i++){
         initbutton(i);
     }   
+    showbuttoncolor();
     </script>    
 </body>
 </html>
