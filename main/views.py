@@ -30,23 +30,22 @@ def changeport(request):
 
 @csrf_exempt
 def car(request):
-    global car
     option = request.GET.get("option")
     if option=="run":
         car.run()
-    elif opton=="leftgo":
+    elif option=="leftgo":
         car.leftgo()
-    elif opton=="leftback":
+    elif option=="leftback":
         car.leftback()
-    elif opton=="rightgo":
+    elif option=="rightgo":
         car.rightgo()
-    elif opton=="rightback":
+    elif option=="rightback":
         car.rightback()
-    elif opton=="stop":
+    elif option=="stop":
         car.stop()
-    elif opton=="stopleft":
+    elif option=="stopleft":
         car.stopleft()
-    elif opton=="stopright":
+    elif option=="stopright":
         car.stopright()
     else:
         return HttpResponse("error") 
