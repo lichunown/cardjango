@@ -2,11 +2,11 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
-from gpio import port
+from gpio import port,run
 # Create your views here.
 
 port.init()
-
+car = run.Car()
 
 @csrf_exempt
 def index(request):
@@ -30,3 +30,36 @@ def changeport(request):
 
 def car(request):
     pass
+
+@csrf_exempt
+def go(request):
+    car.run()
+    return HttpResponse("ok") 
+@csrf_exempt
+def leftgo(request):
+    car.leftgo()
+    return HttpResponse("ok") 
+@csrf_exempt
+def leftback(request):
+    car.leftback()
+    return HttpResponse("ok")     
+@csrf_exempt
+def rightgo(request):
+    car.rightgo()
+    return HttpResponse("ok") 
+@csrf_exempt
+def rightback(request):
+    car.rightback()
+    return HttpResponse("ok")     
+@csrf_exempt
+def stop(request):
+    car.stop()
+    return HttpResponse("ok")      
+@csrf_exempt
+def stopleft(request):
+    car.stopleft()
+    return HttpResponse("ok")   
+@csrf_exempt
+def stopright(request):
+    car.stopright()
+    return HttpResponse("ok")   

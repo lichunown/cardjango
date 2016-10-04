@@ -1,0 +1,21 @@
+<html>
+    
+    <head>  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script></head>
+    <body>
+    <button id="button">test</button>
+        <script>
+        $("#button").mousedown(function(){
+            $("#button").css("background","#555555");
+        });
+        $("#button").on("touchstart",function(){
+            $("#button").css("background","#555555");
+        });
+        $("#button").mouseup(function(){
+            $("#button").css("background","#ffffff");
+        });
+        $("#button").on("touchend",function(){
+            $("#button").css("background","#ffffff");
+        });
+        </script>
+    </body>
+</html>

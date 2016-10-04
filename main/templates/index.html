@@ -11,6 +11,16 @@
                 <button class="testbutton" id="button{{item}}" style="background:#aaaaaa;">{{item}}</button>
             {% endfor %}
 		</div>
+        <div class="car_div">
+            <button id="go" style="height:50px;width:210px;">GO</button><br>
+            <button id="leftgo" style="height:50px;width:100px;">leftgo</button>
+            <button id="rightgo" style="height:50px;width:100px;">rightgo</button>
+            <br>
+            <button id="leftback" style="height:50px;width:100px;">leftback</button>
+            <button id="rightback" style="height:50px;width:100px;">rightback</button>
+            <br>
+            <button id="stop" style="height:50px;width:210px;">GO</button><br>            
+        </div>
         <br>
         <div class="carcontrol">
             
@@ -33,20 +43,21 @@
         });
     }
 
-    function initbutton(i){
-        $(buttonid(i)).click(function(){
-            $.post("/changeport",{"port":i},function(data,status){
-                console.log(data);
-                console.log(status);               
-            });
-            showbuttoncolor();
-        });  
-    }
-    
-    for(var i=1;i<=Number({{maxport}});i++){
-        initbutton(i);
-    }   
-    showbuttoncolor();
+
+    $(document).ready(function(){
+        for(var i=1;i<=Number({{maxport}});i++){
+            (function(i){
+                $(buttonid(i)).click(function(){
+                    $.post("/changeport",{"port":i},function(data,status){
+                        console.log(data);
+                        console.log(status);               
+                    });
+                    showbuttoncolor();
+                });  
+            })(i);
+        }   
+        showbuttoncolor();
+    });
     </script>    
 </body>
 </html>
