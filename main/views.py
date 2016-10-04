@@ -27,3 +27,6 @@ def changeport(request):
         if request.POST.get("port",""):
             result = port.changestat(int(request.POST.get("port","")))
             return HttpResponse(result)    
+
+def car(request):
+    pass
