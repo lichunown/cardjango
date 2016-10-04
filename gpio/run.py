@@ -3,6 +3,7 @@ import time
 from . import port
 class Car():
     def __init__(self):
+        print "car init"
         self.left=[35,37]
         self.right=[36,38]
         port.sethigh(self.left[0])
