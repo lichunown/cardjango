@@ -26,9 +26,12 @@
             data = data.slice(1,-1).split(",")
             $(".testbutton").css("background","#aaaaaa");
             console.log(data);
-            for(var i=0;i<=data.length;i++){
-                $(buttonid(data[i])).css("background","#555555");
-            }
+            (function(data){
+                for(var i=0;i<=data.length;i++){
+                    $(buttonid(data[i])).css("background","#555555");
+                }                
+            })(data);
+    
         });
     }
     function initbutton(i){
