@@ -7,9 +7,7 @@
 	<div class="header"></div>
 	<div class="content">
 		<div class="test">
-			{% for item in ports %}
-                <button class="testbutton" id="button{{item}}" style="background:#aaaaaa;">{{item}}</button>
-            {% endfor %}
+			{% for item in ports %}<button class="testbutton" id="button{{item}}" style="background:#aaaaaa;">{{item}}</button>{% endfor %}
 		</div>
         <div class="car_div">
             <button id="go" style="height:50px;width:210px;">GO</button><br>
@@ -19,7 +17,7 @@
             <button id="leftback" style="height:50px;width:100px;">leftback</button>
             <button id="rightback" style="height:50px;width:100px;">rightback</button>
             <br>
-            <button id="stop" style="height:50px;width:210px;">GO</button><br>            
+            <button id="stop" style="height:50px;width:210px;">STOP</button><br>            
         </div>
         <br>
         <div class="carcontrol">
@@ -33,8 +31,89 @@
     $("#go").click(function(){
         $.get("/car",{"option":"run"},function(data,status){
             console.log(data);
+            showbuttoncolor();
         });
     });
+    $("#stop").click(function(){
+        $.get("/car",{"option":"stop"},function(data,status){
+            console.log(data);
+            showbuttoncolor();
+        });
+    });
+    function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+            return "phone";
+        } else {
+            return "pc";
+        }
+    }
+
+    if(browserRedirect=="pc"){//pc端
+        $("#leftgo").mousedown(function(){
+            $.get("/car",{"option":"leftgo"},function(data,status){
+                console.log(data);
+                showbuttoncolor();
+            });
+        });
+        $("#leftgo").mouseup(function(){
+            $.get("/car",{"option":"stopleft"},function(data,status){
+                console.log(data);
+                showbuttoncolor();
+            });
+        });
+        $("#rightgo").mousedown(function(){
+            $.get("/car",{"option":"rightgo"},function(data,status){
+                console.log(data);
+                showbuttoncolor();
+            });
+        });
+        $("#rightgo").mouseup(function(){
+            $.get("/car",{"option":"stopright"},function(data,status){
+                console.log(data);
+                showbuttoncolor();
+            });
+        });  
+        $("#leftback").mousedown(function(){
+            $.get("/car",{"option":"leftback"},function(data,status){
+                console.log(data);
+                showbuttoncolor();
+            });
+        });
+        $("#leftback").mouseup(function(){
+            $.get("/car",{"option":"stopleft"},function(data,status){
+                console.log(data);
+                showbuttoncolor();
+            });
+        });     
+        $("#rightback").mousedown(function(){
+            $.get("/car",{"option":"rightback"},function(data,status){
+                console.log(data);
+                showbuttoncolor();
+            });
+        });
+        $("#rightback").mouseup(function(){
+            $.get("/car",{"option":"stopright"},function(data,status){
+                console.log(data);
+                showbuttoncolor();
+            });
+        });                  
+    }else{//手机端
+
+    }
+
+
+
+
+
     function showbuttoncolor(){
         $.get("/getstatus",function(data,status){
             data = data.slice(1,-1).split(",")
