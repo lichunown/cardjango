@@ -30,7 +30,11 @@
     function buttonid(num){
         return "#button"+Number(num);
     } 
-   
+    $("#go").click(function(){
+        $.get("/car",{"option":"run"},function(data,status){
+            console.log(data);
+        });
+    });
     function showbuttoncolor(){
         $.get("/getstatus",function(data,status){
             data = data.slice(1,-1).split(",")

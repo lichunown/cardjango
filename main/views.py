@@ -6,6 +6,8 @@ from gpio import port,run
 # Create your views here.
 
 port.init()
+
+
 car = run.Car()
 
 @csrf_exempt
@@ -29,7 +31,7 @@ def changeport(request):
             return HttpResponse(result)  
 
 @csrf_exempt
-def car(request):
+def runcar(request):
     option = request.GET.get("option")
     if option=="run":
         car.run()
@@ -52,43 +54,43 @@ def car(request):
     return HttpResponse("ok") 
 
 
-@csrf_exempt
-def go(request):
-    global car
-    car.run()
-    return HttpResponse("ok") 
-@csrf_exempt
-def leftgo(request):
-    global car    
-    car.leftgo()
-    return HttpResponse("ok") 
-@csrf_exempt
-def leftback(request):
-    global car    
-    car.leftback()
-    return HttpResponse("ok")     
-@csrf_exempt
-def rightgo(request):
-    global car    
-    car.rightgo()
-    return HttpResponse("ok") 
-@csrf_exempt
-def rightback(request):
-    global car    
-    car.rightback()
-    return HttpResponse("ok")     
-@csrf_exempt
-def stop(request):
-    global car    
-    car.stop()
-    return HttpResponse("ok")      
-@csrf_exempt
-def stopleft(request):
-    global car    
-    car.stopleft()
-    return HttpResponse("ok")   
-@csrf_exempt
-def stopright(request):
-    global car    
-    car.stopright()
-    return HttpResponse("ok")   
+# @csrf_exempt
+# def go(request):
+#     global car
+#     car.run()
+#     return HttpResponse("ok") 
+# @csrf_exempt
+# def leftgo(request):
+#     global car    
+#     car.leftgo()
+#     return HttpResponse("ok") 
+# @csrf_exempt
+# def leftback(request):
+#     global car    
+#     car.leftback()
+#     return HttpResponse("ok")     
+# @csrf_exempt
+# def rightgo(request):
+#     global car    
+#     car.rightgo()
+#     return HttpResponse("ok") 
+# @csrf_exempt
+# def rightback(request):
+#     global car    
+#     car.rightback()
+#     return HttpResponse("ok")     
+# @csrf_exempt
+# def stop(request):
+#     global car    
+#     car.stop()
+#     return HttpResponse("ok")      
+# @csrf_exempt
+# def stopleft(request):
+#     global car    
+#     car.stopleft()
+#     return HttpResponse("ok")   
+# @csrf_exempt
+# def stopright(request):
+#     global car    
+#     car.stopright()
+#     return HttpResponse("ok")   
