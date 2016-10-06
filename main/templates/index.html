@@ -58,56 +58,81 @@
     }
 
     if(browserRedirect=="pc"){//pc端
-        $("#leftgo").mousedown(function(){
+        (function(){
+            $("#leftgo").mousedown(function(){
+                $.get("/car",{"option":"leftgo"},function(data,status){
+                    console.log(data);
+                    showbuttoncolor();
+                });
+            });
+            $("#leftgo").mouseup(function(){
+                $.get("/car",{"option":"stopleft"},function(data,status){
+                    console.log(data);
+                    showbuttoncolor();
+                });
+            });
+            $("#rightgo").mousedown(function(){
+                $.get("/car",{"option":"rightgo"},function(data,status){
+                    console.log(data);
+                    showbuttoncolor();
+                });
+            });
+            $("#rightgo").mouseup(function(){
+                $.get("/car",{"option":"stopright"},function(data,status){
+                    console.log(data);
+                    showbuttoncolor();
+                });
+            });  
+            $("#leftback").mousedown(function(){
+                $.get("/car",{"option":"leftback"},function(data,status){
+                    console.log(data);
+                    showbuttoncolor();
+                });
+            });
+            $("#leftback").mouseup(function(){
+                $.get("/car",{"option":"stopleft"},function(data,status){
+                    console.log(data);
+                    showbuttoncolor();
+                });
+            });     
+            $("#rightback").mousedown(function(){
+                $.get("/car",{"option":"rightback"},function(data,status){
+                    console.log(data);
+                    showbuttoncolor();
+                });
+            });
+            $("#rightback").mouseup(function(){
+                $.get("/car",{"option":"stopright"},function(data,status){
+                    console.log(data);
+                    showbuttoncolor();
+                });
+            });  
+        })();                        
+    }else{//手机端
+        $("#leftgo").on("touchstart",function(){
             $.get("/car",{"option":"leftgo"},function(data,status){
                 console.log(data);
                 showbuttoncolor();
             });
         });
-        $("#leftgo").mouseup(function(){
+        $("#leftgo").on("touchend",function(){
             $.get("/car",{"option":"stopleft"},function(data,status){
                 console.log(data);
                 showbuttoncolor();
             });
         });
-        $("#rightgo").mousedown(function(){
+        $("#rightgo").on("touchstart",function(){
             $.get("/car",{"option":"rightgo"},function(data,status){
                 console.log(data);
                 showbuttoncolor();
             });
         });
-        $("#rightgo").mouseup(function(){
+        $("#rightgo").on("touchend",function(){
             $.get("/car",{"option":"stopright"},function(data,status){
                 console.log(data);
                 showbuttoncolor();
             });
-        });  
-        $("#leftback").mousedown(function(){
-            $.get("/car",{"option":"leftback"},function(data,status){
-                console.log(data);
-                showbuttoncolor();
-            });
-        });
-        $("#leftback").mouseup(function(){
-            $.get("/car",{"option":"stopleft"},function(data,status){
-                console.log(data);
-                showbuttoncolor();
-            });
-        });     
-        $("#rightback").mousedown(function(){
-            $.get("/car",{"option":"rightback"},function(data,status){
-                console.log(data);
-                showbuttoncolor();
-            });
-        });
-        $("#rightback").mouseup(function(){
-            $.get("/car",{"option":"stopright"},function(data,status){
-                console.log(data);
-                showbuttoncolor();
-            });
-        });                  
-    }else{//手机端
-
+        });        
     }
 
 
