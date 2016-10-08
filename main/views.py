@@ -5,8 +5,10 @@ import json
 from gpio import port,run
 # Create your views here.
 
-port.init()
-
+try:
+    port.init()
+except Exception,e:
+    print e
 
 car = run.Car()
 
@@ -34,7 +36,7 @@ def changeport(request):
 def runcar(request):
     option = request.GET.get("option")
     if option=="run":
-        car.run()
+        car.go()
     elif option=="leftgo":
         car.leftgo()
     elif option=="leftback":
