@@ -59,7 +59,7 @@
 
     if(browserRedirect=="pc"){//pc端
         (function(){
-            $("#leftgo").mousedown(function(){
+            $("#leftgo").on("mousedown",function(){
                 $.get("/car",{"option":"leftgo"},function(data,status){
                     console.log(data);
                     showbuttoncolor();

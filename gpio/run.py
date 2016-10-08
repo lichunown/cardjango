@@ -36,3 +36,36 @@ class Car():
     def run(self):
         self.leftgo()
         self.rightgo()
+
+class Car2():
+    def __init__(self):
+        print "car init"
+        self.DEVIleft = 0  #deviation
+        self.DEVIright = 0  #deviation
+        self.left=[35,37]
+        self.right=[36,38]
+        self.left1 = GPIO.PWM(self.left[0],500)
+        self.left2 = GPIO.PWM(self.left[1],500) 
+        self.right1 = GPIO.PWM(self.right[0],500)
+        self.right2 = GPIO.PWM(self.right[1],500)         
+        self.left1.ChangeDutyCycle(100)
+        self.left2.ChangeDutyCycle(100)    
+        self.right1.ChangeDutyCycle(100)
+        self.right2.ChangeDutyCycle(100)          
+    def go(self,devleft = self.DEVIleft,devright = self.DEVIright):
+        self.left1.ChangeDutyCycle(devleft)
+        self.right1.ChangeDutyCycle(devright)
+        self.left2.ChangeDutyCycle(100)  
+        self.right2.ChangeDutyCycle(100) 
+    def leftgo(self,dev = self.DEVIleft):
+        self.left1.ChangeDutyCycle(dev)
+        self.left2.ChangeDutyCycle(100)  
+    def leftback(self,dev = self.DEVIleft):
+        self.left1.ChangeDutyCycle(100)                      
+        self.left2.ChangeDutyCycle(dev)
+    def leftstop(self):
+        self.left1.ChangeDutyCycle(100)                      
+        self.left2.ChangeDutyCycle(100)      
+    def rightgo(self,dev = self.DEVIright):
+        self.right1.ChangeDutyCycle(dev)
+        self.left2.ChangeDutyCycle(100)        
