@@ -53,10 +53,19 @@ class Car2():
         self.right1.ChangeDutyCycle(100)
         self.right2.ChangeDutyCycle(100)          
     def go(self,devleft = self.DEVIleft,devright = self.DEVIright):
-        self.left1.ChangeDutyCycle(devleft)
-        self.right1.ChangeDutyCycle(devright)
-        self.left2.ChangeDutyCycle(100)  
-        self.right2.ChangeDutyCycle(100) 
+        # self.left1.ChangeDutyCycle(devleft)
+        # self.right1.ChangeDutyCycle(devright)
+        # self.left2.ChangeDutyCycle(100)  
+        # self.right2.ChangeDutyCycle(100) 
+        self.rightgo(devright)
+        self.leftgo(devleft)
+    def stop(self):
+        self.leftstop()
+        self.rightstop()
+    def back(self,devleft = self.DEVIleft,devright = self.DEVIright):
+        self.leftback(devleft)
+        self.rightback(devright)
+        
     def leftgo(self,dev = self.DEVIleft):
         self.left1.ChangeDutyCycle(dev)
         self.left2.ChangeDutyCycle(100)  
@@ -68,4 +77,10 @@ class Car2():
         self.left2.ChangeDutyCycle(100)      
     def rightgo(self,dev = self.DEVIright):
         self.right1.ChangeDutyCycle(dev)
-        self.left2.ChangeDutyCycle(100)        
+        self.left2.ChangeDutyCycle(100) 
+    def rightback(self,dev = self.DEVIright):
+        self.right1.ChangeDutyCycle(100)
+        self.right2.ChangeDutyCycle(dev)
+    def rightstop(self):
+        self.right1.ChangeDutyCycle(100)                      
+        self.right2.ChangeDutyCycle(100)                 
