@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
-from gpio import run
+from gpio import run,port
 # Create your views here.
 
 try:
