@@ -66,13 +66,13 @@
                 });
             });
             $("#leftgo").mouseup(function(){
-                $.get("/car",{"option":"stopleft"},function(data,status){
+                $.get("/car",{"option":"leftstop"},function(data,status){
                     console.log(data);
                     showbuttoncolor();
                 });
             });
             $("#rightgo").mousedown(function(){
-                $.get("/car",{"option":"rightgo"},function(data,status){
+                $.get("/car",{"option":"goright"},function(data,status){
                     console.log(data);
                     showbuttoncolor();
                 });
@@ -90,7 +90,7 @@
                 });
             });
             $("#leftback").mouseup(function(){
-                $.get("/car",{"option":"stopleft"},function(data,status){
+                $.get("/car",{"option":"leftstop"},function(data,status){
                     console.log(data);
                     showbuttoncolor();
                 });
@@ -102,7 +102,7 @@
                 });
             });
             $("#rightback").mouseup(function(){
-                $.get("/car",{"option":"stopright"},function(data,status){
+                $.get("/car",{"option":"rightstop"},function(data,status){
                     console.log(data);
                     showbuttoncolor();
                 });
@@ -116,7 +116,7 @@
             });
         });
         $("#leftgo").on("touchend",function(){
-            $.get("/car",{"option":"stopleft"},function(data,status){
+            $.get("/car",{"option":"leftstop"},function(data,status){
                 console.log(data);
                 showbuttoncolor();
             });
@@ -128,7 +128,7 @@
             });
         });
         $("#rightgo").on("touchend",function(){
-            $.get("/car",{"option":"stopright"},function(data,status){
+            $.get("/car",{"option":"rightstop"},function(data,status){
                 console.log(data);
                 showbuttoncolor();
             });

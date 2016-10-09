@@ -36,22 +36,24 @@ def changeport(request):
 @csrf_exempt
 def runcar(request):
     option = request.GET.get("option")
+    devileft = request.GET.get("DEVIleft",None)
+    deviright = request.GET.get("DEVIright",None)    
     if option=="run":
-        car.go()
+        car.go(devileft,deviright)
     elif option=="leftgo":
-        car.leftgo()
+        car.leftgo(devileft)
     elif option=="leftback":
-        car.leftback()
+        car.leftback(devileft)
     elif option=="rightgo":
-        car.rightgo()
+        car.rightgo(deviright)
     elif option=="rightback":
-        car.rightback()
+        car.rightback(deviright)
     elif option=="stop":
         car.stop()
-    elif option=="stopleft":
-        car.stopleft()
-    elif option=="stopright":
-        car.stopright()
+    elif option=="leftstop":
+        car.leftstop()
+    elif option=="rightstop":
+        car.rightstop()
     else:
         return HttpResponse("error") 
     return HttpResponse("ok") 
