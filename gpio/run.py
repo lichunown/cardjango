@@ -70,6 +70,7 @@ class Car():
         devright = self.DEVIright if not devright else int(devright)
         self.rightgo(devright)
         self.leftgo(devleft)
+        return (devleft,devleft)
     def stop(self):
         self.leftstop()
         self.rightstop()
@@ -78,15 +79,17 @@ class Car():
         devright = self.DEVIright if not devright else int(devright)        
         self.leftback(devleft)
         self.rightback(devright)
-
+        return (devleft,devleft)
     def leftgo(self,dev = None):
         dev = self.DEVIleft if not dev else int(dev)
         self.left1.ChangeDutyCycle(dev)
         self.left2.ChangeDutyCycle(100)  
+        return dev
     def leftback(self,dev = None):
         dev = self.DEVIleft if not dev else int(dev)
         self.left1.ChangeDutyCycle(100)                      
         self.left2.ChangeDutyCycle(dev)
+        return dev        
     def leftstop(self):
         self.left1.ChangeDutyCycle(100)                      
         self.left2.ChangeDutyCycle(100)      
@@ -94,10 +97,13 @@ class Car():
         dev = self.DEVIright if not dev else int(dev)       
         self.right1.ChangeDutyCycle(dev)
         self.left2.ChangeDutyCycle(100) 
+        return dev        
     def rightback(self,dev = None):
         dev = self.DEVIright if not dev else int(dev)            
         self.right1.ChangeDutyCycle(100)
         self.right2.ChangeDutyCycle(dev)
+        return dev        
     def rightstop(self):
         self.right1.ChangeDutyCycle(100)                      
-        self.right2.ChangeDutyCycle(100)                 
+        self.right2.ChangeDutyCycle(100)  
+        return dev               

@@ -32,22 +32,23 @@ def changeport(request):
         if request.POST.get("port",""):
             result = port.changestat(int(request.POST.get("port","")))
             return HttpResponse(result)  
-
+r = 0
+l = 0
 @csrf_exempt
 def runcar(request):
     option = request.GET.get("option")
     devileft = request.GET.get("DEVIleft",None)
     deviright = request.GET.get("DEVIright",None)    
     if option=="run":
-        car.go(devileft,deviright)
+        (l,r) = car.go(devileft,deviright)
     elif option=="leftgo":
-        car.leftgo(devileft)
+        l = car.leftgo(devileft)
     elif option=="leftback":
-        car.leftback(devileft)
+        l = car.leftback(devileft)
     elif option=="rightgo":
-        car.rightgo(deviright)
+        r = car.rightgo(deviright)
     elif option=="rightback":
-        car.rightback(deviright)
+        r = car.rightback(deviright)
     elif option=="stop":
         car.stop()
     elif option=="leftstop":
@@ -55,8 +56,8 @@ def runcar(request):
     elif option=="rightstop":
         car.rightstop()
     else:
-        return HttpResponse("error") 
-    return HttpResponse("ok") 
+        return HttpResponse("error\nGET:"+str(request.GET)) 
+    return HttpResponse("ok:"+"left"+str(l)+"right"+str(r)) 
 
 
 # @csrf_exempt
