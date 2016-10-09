@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
-from gpio import port,run
+from gpio import run
 # Create your views here.
 
 # try:
@@ -22,16 +22,16 @@ def index(request):
     pass
 
 
-@csrf_exempt
-def getstatus(request):
-    return HttpResponse(json.dumps(port.getstatus()))
+# @csrf_exempt
+# def getstatus(request):
+#     return HttpResponse(json.dumps(port.getstatus()))
 
-@csrf_exempt
-def changeport(request):
-    if request.method=="POST":
-        if request.POST.get("port",""):
-            result = port.changestat(int(request.POST.get("port","")))
-            return HttpResponse(result)  
+# @csrf_exempt
+# def changeport(request):
+#     if request.method=="POST":
+#         if request.POST.get("port",""):
+#             result = port.changestat(int(request.POST.get("port","")))
+#             return HttpResponse(result)  
 
 @csrf_exempt
 def runcar(request):
