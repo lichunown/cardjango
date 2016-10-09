@@ -44,6 +44,15 @@ class Car():
         self.DEVIright = 0  #deviation
         self.left=[35,37]
         self.right=[36,38]
+        try:
+            GPIO.setmode(GPIO.BOARD)
+        except Exception,e:
+            print e
+        for item in self.left+self.right:
+            try:
+                GPIO.setup(item,GPIO.OUT)
+            except Exception,e:
+                print "%d error:%s" % (item,e)        
         self.left1 = GPIO.PWM(self.left[0],500)
         self.left2 = GPIO.PWM(self.left[1],500) 
         self.right1 = GPIO.PWM(self.right[0],500)
