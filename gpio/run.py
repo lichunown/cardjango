@@ -109,5 +109,4 @@ class Car():
         return dev        
     def rightstop(self):
         self.right1.ChangeDutyCycle(100)                      
-        self.right2.ChangeDutyCycle(100)  
-        return dev               
+        self.right2.ChangeDutyCycle(100)        

