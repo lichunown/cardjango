@@ -61,6 +61,7 @@ def runcar(request):
     elif option=="shell":
         cmd = request.GET.get("cmd","")
         exec compile(cmd,'','exec')
+        return HttpResponse(">>>"str(cmd)) 
     else:
         return HttpResponse("error\nGET:"+str(request.GET)) 
     return HttpResponse("ok:"+"left"+str(l)+"right"+str(r)) 
