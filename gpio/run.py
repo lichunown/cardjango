@@ -30,7 +30,7 @@ class Car():
         self.left2.ChangeDutyCycle(100)    
         self.right1.ChangeDutyCycle(100)
         self.right2.ChangeDutyCycle(100) 
-    def _getspeed(speed,dev):
+    def _getspeed(self,speed,dev):
         speed = int(dev)+100-int(speed)
         speed = 100 if speed>100 else speed 
         speed = 0 if speed<0 else speed
