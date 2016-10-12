@@ -32,6 +32,7 @@ r = 0
 l = 0
 @csrf_exempt
 def runcar(request):
+    global r,l
     option = request.GET.get("option")
     devileft = request.GET.get("DEVIleft",None)
     deviright = request.GET.get("DEVIright",None)
