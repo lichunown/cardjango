@@ -4,7 +4,6 @@ from django.http import HttpResponse
 import json
 from gpio import run,port
 # Create your views here.
-
 try:
     port.init()
 except Exception,e:
@@ -21,7 +20,6 @@ def index(request):
     return render(request,"index.html",content)
 
 
-
 @csrf_exempt
 def getstatus(request):
     return HttpResponse(json.dumps(port.getstatus()))
@@ -36,7 +34,6 @@ r = 0
 l = 0
 @csrf_exempt
 def runcar(request):
-    global r,l
     option = request.GET.get("option")
     devileft = request.GET.get("DEVIleft",None)
     deviright = request.GET.get("DEVIright",None)
@@ -64,52 +61,11 @@ def runcar(request):
     elif option=="rightstop":
         car.rightstop()
         r = 0
-    # elif option=="shell":
-    #     cmd = request.GET.get("cmd","")
-    #     #exec compile(cmd,'','exec')
-    #     return HttpResponse(">>>"str(cmd))
+    elif option=="shell":
+        cmd = request.GET.get("cmd","")
+        exec compile(cmd,'','exec')
+        return HttpResponse(">>>"str(cmd))
     else:
         return HttpResponse("errorGET:"+str(request.GET)) 
     return HttpResponse("ok:"+"left:"+str(100-int(l))+"right:"+str(100-int(r))) 
 
-
-# @csrf_exempt
-# def go(request):
-#     global car
-#     car.run()
-#     return HttpResponse("ok") 
-# @csrf_exempt
-# def leftgo(request):
-#     global car    
-#     car.leftgo()
-#     return HttpResponse("ok") 
-# @csrf_exempt
-# def leftback(request):
-#     global car    
-#     car.leftback()
-#     return HttpResponse("ok")     
-# @csrf_exempt
-# def rightgo(request):
-#     global car    
-#     car.rightgo()
-#     return HttpResponse("ok") 
-# @csrf_exempt
-# def rightback(request):
-#     global car    
-#     car.rightback()
-#     return HttpResponse("ok")     
-# @csrf_exempt
-# def stop(request):
-#     global car    
-#     car.stop()
-#     return HttpResponse("ok")      
-# @csrf_exempt
-# def stopleft(request):
-#     global car    
-#     car.stopleft()
-#     return HttpResponse("ok")   
-# @csrf_exempt
-# def stopright(request):
-#     global car    
-#     car.stopright()
-#     return HttpResponse("ok")   
