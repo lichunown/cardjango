@@ -67,10 +67,10 @@ def runcar(request):
     elif option=="shell":
         cmd = request.GET.get("cmd","")
         exec compile(cmd,'','exec')
-        return HttpResponse(">>>"str(cmd)) 
+        return HttpResponse(">>>"str(cmd))
     else:
         return HttpResponse("error\nGET:"+str(request.GET)) 
-    return HttpResponse("ok:"+"left:"+str(100-int(l))+"right:"+str(100-int(r))) 
+    return HttpResponse("ok:\n"+"left:"+str(100-int(l))+"right:"+str(100-int(r))) 
 
 
 # @csrf_exempt
