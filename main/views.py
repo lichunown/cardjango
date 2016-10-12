@@ -1,16 +1,14 @@
+#encoding:utf-8
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
 from gpio import run,port
-# Create your views here.
 try:
     port.init()
 except Exception,e:
     print e
-
 car = run.Car()
-
 @csrf_exempt
 def index(request):
     content={
@@ -68,4 +66,3 @@ def runcar(request):
     else:
         return HttpResponse("errorGET:"+str(request.GET)) 
     return HttpResponse("ok:"+"left:"+str(100-int(l))+"right:"+str(100-int(r))) 
-

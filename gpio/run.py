@@ -2,7 +2,6 @@ import RPi.GPIO as GPIO
 import time
 from . import port
 
-
 class Car():
     def __init__(self):
         print "car init"
