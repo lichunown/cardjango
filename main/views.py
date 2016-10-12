@@ -50,16 +50,16 @@ def runcar(request):
         r = car.rightback(rightspeed,deviright)
     elif option=="stop":
         car.stop()
-        l = 0
-        r = 0
+        l = 100
+        r = 100
     elif option=="back":
         (l,r) = car.back()
     elif option=="leftstop":
         car.leftstop()
-        l = 0
+        l = 100
     elif option=="rightstop":
         car.rightstop()
-        r = 0
+        r = 100
     elif option=="shell":
         cmd = request.GET.get("cmd","")
         exec compile(cmd,'','exec')
