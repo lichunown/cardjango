@@ -54,19 +54,23 @@ def runcar(request):
         r = car.rightback(rightspeed,deviright)
     elif option=="stop":
         car.stop()
+        l = 0
+        r = 0
     elif option=="back":
-        car.back()
+        (l,r) = car.back()
     elif option=="leftstop":
         car.leftstop()
+        l = 0
     elif option=="rightstop":
         car.rightstop()
+        r = 0
     elif option=="shell":
         cmd = request.GET.get("cmd","")
         exec compile(cmd,'','exec')
         return HttpResponse(">>>"str(cmd)) 
     else:
         return HttpResponse("error\nGET:"+str(request.GET)) 
-    return HttpResponse("ok:"+"left"+str(l)+"right"+str(r)) 
+    return HttpResponse("ok:"+"left:"+str(100-int(l))+"right:"+str(100-int(r))) 
 
 
 # @csrf_exempt
