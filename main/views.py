@@ -39,17 +39,19 @@ def runcar(request):
     global r,l
     option = request.GET.get("option")
     devileft = request.GET.get("DEVIleft",None)
-    deviright = request.GET.get("DEVIright",None)    
+    deviright = request.GET.get("DEVIright",None)
+    leftspeed = request.GET.get("leftspeed",100)
+    rightspeed = request.GET.get("rightspeed",100)    
     if option=="run":
-        (l,r) = car.go(devileft,deviright)
+        (l,r) = car.go(leftspeed,rightspeed,devileft,deviright)
     elif option=="leftgo":
-        l = car.leftgo(devileft)
+        l = car.leftgo(leftspeed,devileft)
     elif option=="leftback":
-        l = car.leftback(devileft)
+        l = car.leftback(leftspeed,devileft)
     elif option=="rightgo":
-        r = car.rightgo(deviright)
+        r = car.rightgo(rightspeed,deviright)
     elif option=="rightback":
-        r = car.rightback(deviright)
+        r = car.rightback(rightspeed,deviright)
     elif option=="stop":
         car.stop()
     elif option=="back":
