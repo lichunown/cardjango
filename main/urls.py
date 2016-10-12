@@ -16,4 +16,4 @@ urlpatterns = [
     # url(r'^stopright', views.stopright,name='stopright'),
     url(r'^getstatus', views.getstatus,name='getstatus'),    
     url(r'^changeport', views.changeport,name='changeport'),      
-	]
+]

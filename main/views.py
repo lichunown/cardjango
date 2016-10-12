@@ -64,10 +64,10 @@ def runcar(request):
     elif option=="rightstop":
         car.rightstop()
         r = 0
-    elif option=="shell":
-        cmd = request.GET.get("cmd","")
-        exec compile(cmd,'','exec')
-        return HttpResponse(">>>"str(cmd))
+    # elif option=="shell":
+    #     cmd = request.GET.get("cmd","")
+    #     #exec compile(cmd,'','exec')
+    #     return HttpResponse(">>>"str(cmd))
     else:
         return HttpResponse("error\nGET:"+str(request.GET)) 
     return HttpResponse("ok:\n"+"left:"+str(100-int(l))+"right:"+str(100-int(r))) 
