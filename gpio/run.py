@@ -69,7 +69,7 @@ class Car():
         dev = self.DEVIright if not dev else int(dev)   
         realspeed = self._getspeed(speed,dev)             
         self.right1.ChangeDutyCycle(realspeed)
-        self.left2.ChangeDutyCycle(100) 
+        self.right2.ChangeDutyCycle(100) 
         return realspeed        
     def rightback(self,speed = 100,dev = None):
         dev = self.DEVIright if not dev else int(dev)   

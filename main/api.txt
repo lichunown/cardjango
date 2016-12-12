@@ -1,0 +1,17 @@
+GET发送数据
+/car/+get数据
+必选参数：
+option = run,leftgo rightgo leftback,rightback,stop,back,leftstop,rightstop
+可选参数：
+DEVIleft（0-100 左侧速度偏移量,100的时候减少的速度最多）
+DEVIright（0-100 右侧速度偏移量，100的时候减少的速度最多）
+leftspeed（0-100 左侧速度，100速度最大）
+rightspeed（0-100 右侧速度，100速度最大）
+
+eg：
+http://0.0.0.0:8000/car?option=run&leftspeed=100&rightspeed=100&DEVIleft=0&DEVIright=0
+
+成功返回：
+ok:left:[speed]right:[speed]
+失败返回:
+errorGET[GET数据包]
